@@ -1,6 +1,6 @@
 # Cryo-Bench 🧊
 
-> **A Comprehensive Benchmark for Evaluating Geospatial Foundation Models on Cryosphere Remote Sensing Tasks**
+> **A Benchmark for Evaluating Geospatial Foundation Models on Cryosphere Remote Sensing Tasks**
 
 [![Paper](https://img.shields.io/badge/Paper-Coming%20Soon-lightgrey?style=flat-square&logo=arxiv)](https://arxiv.org)
 [![PANGAEA](https://img.shields.io/badge/Built%20on-PANGAEA-blue?style=flat-square)](https://arxiv.org/abs/2412.04204)
