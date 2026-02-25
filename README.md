@@ -53,7 +53,7 @@ Table below reports mIoU (↑) for all models evaluated with **frozen encoders**
 
 > Encoders are kept **frozen** for all GFMs. U-Net and ViT are trained from scratch.
 
-![Cryo-Bench Overview](assets/overview.png)
+![Cryo-Bench Overview](assets/radar.png)
 
 
 ## 📜 License
