@@ -6,8 +6,7 @@
 [![PANGAEA](https://img.shields.io/badge/Built%20on-PANGAEA-blue?style=flat-square)](https://arxiv.org/abs/2412.04204)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-<!-- Add a teaser figure here once available -->
-<!-- ![Cryo-Bench Overview](assets/overview.png) -->
+![Cryo-Bench Overview](assets/overview.png)
 
 **Cryo-Bench** is a community benchmark that evaluates geospatial foundation models (GFMs) on five cryosphere remote sensing tasks spanning glacial lakes, supraglacial debris, sea ice, and calving fronts. It is built on top of the [PANGAEA](https://arxiv.org/abs/2412.04204) evaluation protocol using multi-sensor satellite imagery from Sentinel-1/2, Landsat-8, WorldView-2, and historical SAR missions.
 
