@@ -231,6 +231,99 @@ echo "All runs finished "
 
 ---
 
+### 4. Calving Fronts Classification (CaFFe)
+
+The CaFFe dataset supports two encoder configurations depending on whether the model has been pre-trained on SAR data.
+
+#### RGB / Optical Encoders
+
+```bash
+encoders=("gfmswin" "prithvi" "remoteclip" "satlasnet_si" "scalemae" "spectralgpt" "ssl4eo_moco" "ssl4eo_dino"  "ssl4eo_data2vec" "vit_scratch" "unet_encoder")
+
+for enc in "${encoders[@]}"
+do
+  echo "=============================="
+  echo "Running encoder: $enc"
+  echo "=============================="
+
+  # Default settings
+  decoder="seg_upernet"
+  finetune="False"
+ 
+  # Adjust decoder and finetune for specific encoders
+  if [ "$enc" == "unet_encoder" ]; then
+      decoder="seg_unet"
+      finetune="True"
+  elif [ "$enc" == "vit_scratch" ]; then
+      finetune="True"
+  fi
+
+
+
+  torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
+     --config-name=train \
+     dataset=zone_mapping_optical \
+     encoder=$enc \
+     decoder=$decoder \
+     preprocessing=seg_default \
+     criterion=cross_entropy \
+     task=segmentation \
+     work_dir="/mnt/lustre/lalit47/cryo/exp/zone/ten/" \
+     finetune=$finetune \
+     limited_label_train=0.1
+
+  echo "Finished $enc"
+done
+
+echo "All runs finished "
+```
+
+#### SAR-Aware Encoders (DOFA, TerraMind, RAMEN, CROMA)
+
+For models pre-trained on or compatible with SAR imagery, use the `zone_mapping_sar` dataset config:
+
+```bash
+encoders=("croma_sar" "dofa" "ssl4eo_mae_sar" "terramind_large" "ramen_monotemporal" )
+
+for enc in "${encoders[@]}"
+do
+  echo "=============================="
+  echo "Running encoder: $enc"
+  echo "=============================="
+
+  # Default settings
+  decoder="seg_upernet"
+  finetune="False"
+ 
+  # Adjust decoder and finetune for specific encoders
+  if [ "$enc" == "unet_encoder" ]; then
+      decoder="seg_unet"
+      finetune="True"
+  elif [ "$enc" == "vit_scratch" ]; then
+      finetune="True"
+  fi
+
+
+
+  torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
+     --config-name=train \
+     dataset=zone_mapping_sar \
+     encoder=$enc \
+     decoder=$decoder \
+     preprocessing=seg_default \
+     criterion=cross_entropy \
+     task=segmentation \
+     work_dir="/mnt/lustre/lalit47/cryo/exp/zone/ten/" \
+     finetune=$finetune \
+     limited_label_train=0.1
+
+  echo "Finished $enc"
+done
+
+echo "All runs finished "
+```
+
+---
 
 ## ⚡ FLOPs & Inference Time Profiling
 
