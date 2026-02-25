@@ -1,0 +1,63 @@
+_target_: pangaea.datasets.zone_mapping_optical.ZONE
+
+dataset_name: zone_mapping
+root_path: /mnt/lustre/lalit47/cryo/data/zone_mapping
+
+download_url: null
+auto_download: False
+
+img_size: 1024
+multi_temporal: False
+multi_modal: False
+
+ignore_index: -1
+num_classes: 4
+
+classes:
+  - class 0
+  - Class 1
+  - class 2
+  - class 3
+
+distribution:
+  - 0.0829
+  - 0.1501
+  - 0.5627
+  - 0.2043
+
+bands:
+  optical:
+    - B4
+    - B3
+    - B2
+    #- VH
+ 
+data_mean:
+  optical:
+    - 73.7227
+    - 73.7227
+    - 73.7227
+    #- -23.0533
+ 
+data_std:
+  optical:
+    - 80.7074
+    - 80.7074
+    - 80.7074
+    #- 7.5366
+ 
+
+data_min:
+  optical:
+    - 0.0000
+    - 0.0000
+    - 0.0000
+    #- -58.0635
+  
+
+data_max:
+   optical:
+    - 255.0000
+    - 255.0000
+    - 255.0000
+    #- 10.6666
