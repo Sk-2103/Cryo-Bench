@@ -62,6 +62,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
+## 📜 Note
+
+Cryo-Bench is an actively growing benchmark. We aim to extend it to new cryosphere applications, sensors, and geographies. If you have suggestions for dataset inclusion or collaborative ideas, feel free to reach out at skaushik8@wisc.edu — we'd love to hear from you!
+
+---
+
 ## 🙏 Acknowledgements
 
 Cryo-Bench builds on the [PANGAEA benchmark](https://github.com/yurujaja/pangaea-bench) and the [RAMEN](https://github.com/nicolashoudre/RAMEN) framework. We thank the developers of DOFA, TerraMind, Prithvi, SatlasNet, and all other foundation models included in this benchmark. We also thank the dataset authors of GSDD, GLID, GLD, SICD, and CaFFe for making their data publicly available.
