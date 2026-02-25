@@ -1,0 +1,165 @@
+task:
+  trainer:
+    _target_: pangaea.engine.trainer.SegTrainer
+    model: null
+    train_loader: null
+    optimizer: null
+    lr_scheduler: null
+    evaluator: null
+    exp_dir: null
+    device: null
+    criterion: null
+    n_epochs: 80
+    precision: fp32
+    ckpt_interval: 20
+    eval_interval: 5
+    log_interval: 5
+    best_metric_key: mIoU
+    use_wandb: ${use_wandb}
+  evaluator:
+    _target_: pangaea.engine.evaluator.SegEvaluator
+    val_loader: null
+    exp_dir: null
+    device: null
+    use_wandb: ${use_wandb}
+    inference_mode: sliding
+    sliding_inference_batch: 8
+dataset:
+  _target_: pangaea.datasets.glid.GLID
+  dataset_name: GLID
+  root_path: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/GLID/GLID/
+  download_url: ''
+  auto_download: false
+  img_size: 512
+  multi_temporal: false
+  multi_modal: false
+  ignore_index: -1
+  num_classes: 2
+  classes:
+  - Background
+  - Target
+  distribution:
+  - 0.5
+  - 0.5
+  bands:
+    optical:
+    - B4
+    - B3
+    - B2
+  data_mean:
+    optical:
+    - 120.08558725516001
+    - 124.71967935959498
+    - 123.13973035812378
+  data_std:
+    optical:
+    - 74.64604398949137
+    - 74.35002658020812
+    - 76.54707139907019
+  data_min:
+    optical:
+    - 0.0
+    - 0.0
+    - 0.0
+  data_max:
+    optical:
+    - 255.0
+    - 255.0
+    - 255.0
+encoder:
+  _target_: pangaea.encoders.ramen_encoder.RAMEN_Encoder_MonoTemporal
+  encoder_weights: ./pretrained_models/ramen_base_99.ckpt
+  download_url: https://huggingface.co/nicolashoudre/RAMEN/resolve/main/ramen_base_99.ckpt
+  embed_dim: 768
+  input_size: 512
+  depth: 12
+  num_heads: 12
+  mlp_ratio: 4
+  input_bands: ${dataset.bands}
+  input_res: 3.0
+  res: 24.0
+  wavelengths:
+    optical:
+      B1: 440.0
+      B2: 490.0
+      B3: 560.0
+      B4: 665.0
+      B5: 705.0
+      B6: 740.0
+      B7: 783.0
+      B8: 832.0
+      B8A: 865.0
+      B9: 945.0
+      B10: 1373.0
+      B11: 1610.0
+      B12: 2200.0
+    sar:
+      VV: asc_vv
+      VH: asc_vh
+  output_layers:
+  - 3
+  - 5
+  - 7
+  - 11
+  output_dim: 768
+decoder:
+  _target_: pangaea.decoders.upernet.SegUPerNet
+  channels: 512
+  encoder: null
+  num_classes: ${dataset.num_classes}
+  finetune: ${finetune}
+preprocessing:
+  train:
+    _target_: pangaea.engine.data_preprocessor.Preprocessor
+    preprocessor_cfg:
+    - _target_: pangaea.engine.data_preprocessor.RandomCropToEncoder
+    - _target_: pangaea.engine.data_preprocessor.BandFilter
+    - _target_: pangaea.engine.data_preprocessor.NormalizeMeanStd
+    - _target_: pangaea.engine.data_preprocessor.BandPadding
+  val:
+    _target_: pangaea.engine.data_preprocessor.Preprocessor
+    preprocessor_cfg:
+    - _target_: pangaea.engine.data_preprocessor.BandFilter
+    - _target_: pangaea.engine.data_preprocessor.NormalizeMeanStd
+    - _target_: pangaea.engine.data_preprocessor.BandPadding
+  test:
+    _target_: pangaea.engine.data_preprocessor.Preprocessor
+    preprocessor_cfg:
+    - _target_: pangaea.engine.data_preprocessor.BandFilter
+    - _target_: pangaea.engine.data_preprocessor.NormalizeMeanStd
+    - _target_: pangaea.engine.data_preprocessor.BandPadding
+criterion:
+  _target_: torch.nn.CrossEntropyLoss
+  ignore_index: ${dataset.ignore_index}
+lr_scheduler:
+  _target_: pangaea.utils.schedulers.MultiStepLR
+  optimizer: null
+  total_iters: null
+  lr_milestones:
+  - 0.6
+  - 0.9
+optimizer:
+  _target_: torch.optim.AdamW
+  params: null
+  lr: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  weight_decay: 0.05
+train: true
+work_dir: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/GLID/results/RAMEN_10/smoke/ramen_monotemporal_glid_res80
+seed: 234
+use_wandb: false
+wandb_run_id: null
+num_workers: 8
+batch_size: 8
+test_num_workers: 4
+test_batch_size: 1
+finetune: false
+ckpt_dir: null
+limited_label_train: 0.1
+limited_label_val: 1
+limited_label_strategy: stratified
+stratification_bins: 3
+data_replicate: 1
+use_final_ckpt: false

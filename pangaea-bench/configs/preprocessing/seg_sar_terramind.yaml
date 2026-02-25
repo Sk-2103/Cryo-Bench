@@ -1,0 +1,50 @@
+# SAR-only preprocessing but always defines both modality keys (optical + sar)
+
+train:
+  _target_: pangaea.engine.data_preprocessor.Preprocessor
+  preprocessor_cfg:
+    - _target_: pangaea.engine.data_preprocessor.RandomCropToEncoder
+    - _target_: pangaea.engine.data_preprocessor.BandFilter
+      bands:
+        optical: []
+        sar: ${dataset.bands.sar}
+    - _target_: pangaea.engine.data_preprocessor.NormalizeMeanStd
+      mean: ${dataset.data_mean.sar}
+      std: ${dataset.data_std.sar}
+      modality: sar
+    - _target_: pangaea.engine.data_preprocessor.BandPadding
+      bands:
+        optical: []
+        sar: ${dataset.bands.sar}
+
+val:
+  _target_: pangaea.engine.data_preprocessor.Preprocessor
+  preprocessor_cfg:
+    - _target_: pangaea.engine.data_preprocessor.BandFilter
+      bands:
+        optical: []
+        sar: ${dataset.bands.sar}
+    - _target_: pangaea.engine.data_preprocessor.NormalizeMeanStd
+      mean: ${dataset.data_mean.sar}
+      std: ${dataset.data_std.sar}
+      modality: sar
+    - _target_: pangaea.engine.data_preprocessor.BandPadding
+      bands:
+        optical: []
+        sar: ${dataset.bands.sar}
+
+test:
+  _target_: pangaea.engine.data_preprocessor.Preprocessor
+  preprocessor_cfg:
+    - _target_: pangaea.engine.data_preprocessor.BandFilter
+      bands:
+        optical: []
+        sar: ${dataset.bands.sar}
+    - _target_: pangaea.engine.data_preprocessor.NormalizeMeanStd
+      mean: ${dataset.data_mean.sar}
+      std: ${dataset.data_std.sar}
+      modality: sar
+    - _target_: pangaea.engine.data_preprocessor.BandPadding
+      bands:
+        optical: []
+        sar: ${dataset.bands.sar}

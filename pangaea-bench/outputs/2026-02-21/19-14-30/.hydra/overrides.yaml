@@ -1,0 +1,11 @@
+- dataset=ai4arctic
+- task=segmentation
+- encoder=ramen_monotemporal
+- encoder.input_size=128
+- encoder.input_res=40
+- encoder.res=80.0
+- decoder=seg_upernet
+- preprocessing=seg_default
+- criterion=cross_entropy
+- finetune=true
+- work_dir=/media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/AI4Arctic/results/finetune/ramen_ai4arctic

@@ -1,0 +1,11 @@
+- dataset=glid
+- task=segmentation
+- encoder=ramen_monotemporal
+- decoder=seg_upernet
+- preprocessing=seg_default
+- criterion=cross_entropy
+- limited_label_train=0.1
+- encoder.input_size=512
+- encoder.input_res=3.0
+- encoder.res=24.0
+- work_dir=/media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/GLID/results/RAMEN_10/smoke/ramen_monotemporal_glid_res80

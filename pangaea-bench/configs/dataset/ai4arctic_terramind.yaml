@@ -1,0 +1,41 @@
+# @package _global_
+
+dataset:
+  _target_: pangaea.datasets.ai4arctic_terramind.AI4ArcticTerraMindDataset
+  dataset_name: ai4arctic
+  root_path: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/AI4Arctic
+  img_size: 512
+  multi_temporal: 0
+  multi_modal: false
+  ignore_index: 255
+
+  num_classes: 6
+  classes:
+    - open_water
+    - new_ice
+    - young_ice
+    - thin_first_year_ice
+    - thick_first_year_ice
+    - old_ice
+  distribution: [0.65, 0.01, 0.025, 0.021, 0.145, 0.132]
+
+  # Provide BOTH modality keys for preprocessors/meta logic
+  bands:
+    optical: []
+    sar: [VV, VH]
+
+  # Provide BOTH modality keys for meta slicing logic (empty optical arrays)
+  data_mean:
+    optical: []
+    sar: [-0.16381396, -0.22024433]
+  data_std:
+    optical: []
+    sar: [0.61435765, 0.37416646]
+
+  # Optional but safe to include (some preprocessors read these)
+  data_min:
+    optical: []
+    sar: [-30.0, -35.0]
+  data_max:
+    optical: []
+    sar: [5.0, 0.0]
