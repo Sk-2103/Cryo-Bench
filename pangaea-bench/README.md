@@ -207,7 +207,7 @@ do
   if [ "$enc" == "unet_encoder" ]; then
       decoder="seg_unet"
       finetune="True"
-  elif [ "$enc" == "vit" ]; then
+  elif [ "$enc" == "vit_scratch" ]; then
       finetune="True"
   fi
 
