@@ -242,6 +242,7 @@ If you use Cryo-Bench or the underlying PANGAEA framework, please cite:
 ```
 If you use RAMEN, please cite
 
+```bibtex
 @misc{marsocci2024pangaeaglobalinclusivebenchmark,
       title={PANGAEA: A Global and Inclusive Benchmark for Geospatial Foundation Models}, 
       author={Valerio Marsocci and Yuru Jia and Georges Le Bellier and David Kerekes and Liang Zeng and Sebastian Hafner and Sebastian Gerard and Eric Brune and Ritu Yadav and Ali Shibli and Heng Fang and Yifang Ban and Maarten Vergauwen and Nicolas Audebert and Andrea Nascetti},
@@ -251,6 +252,10 @@ If you use RAMEN, please cite
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2412.04204}, 
 }
+```
+
+
+
 
 > If you use Cryo-Bench specifically, please also cite our paper (coming soon).
 
