@@ -203,7 +203,7 @@ torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
 ## 📂 Repository Structure
 
 ```
-RAMEN/
+Cryo-Bench/
 └── pangaea-bench/
     ├── pangaea/
     │   ├── run.py              # Main entry point
