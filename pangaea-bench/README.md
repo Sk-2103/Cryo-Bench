@@ -154,6 +154,84 @@ done
 
 ---
 
+### 3. Supraglacial Debris Image Segmentation (GSSD)
+
+#### RAMEN Encoder
+
+```bash
+torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
+  --config-name=train \
+  dataset=glid \
+  encoder=ramen_monotemporal \
+  encoder.input_res=30.0 \
+  encoder.input_size=40 \
+  encoder.res=80.0 \
+  decoder=seg_upernet \
+  preprocessing=seg_default \
+  criterion=cross_entropy \
+  task=segmentation
+```
+
+> **Note:** `encoder.input_size` and `encoder.res` may need to be tuned depending on your data configuration.
+
+#### Baseline U-Net
+
+```bash
+torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
+  --config-name=train \
+  dataset=glid \
+  encoder=unet_encoder \
+  decoder=seg_unet \
+  preprocessing=seg_default \
+  criterion=cross_entropy \
+  finetune=true \
+  task=segmentation
+```
+
+#### Complete Bash Script files
+
+```bash
+encoders=("croma_optical" "dofa" "gfmswin" "prithvi" "remoteclip" "satlasnet_si" "scalemae" "spectralgpt" "ssl4eo_moco" "ssl4eo_dino" "ssl4eo_mae_optical" "ssl4eo_data2vec" "terramind_large" "vit" "unet_encoder")
+
+for enc in "${encoders[@]}"
+do
+  echo "=============================="
+  echo "Running encoder: $enc"
+  echo "=============================="
+
+  # Default settings
+  decoder="seg_upernet"
+  finetune="False"
+
+  # Adjust decoder and finetune for specific encoders
+  if [ "$enc" == "unet_encoder" ]; then
+      decoder="seg_unet"
+      finetune="True"
+  elif [ "$enc" == "vit" ]; then
+      finetune="True"
+  fi
+
+  torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
+     --config-name=train \
+     dataset=gssd \
+     encoder=$enc \
+     decoder=$decoder \
+     preprocessing=seg_default \
+     criterion=cross_entropy \
+     task=segmentation \
+     work_dir="/mnt/lustre/lalit47/cryo/exp/full/" \
+     finetune=$finetune
+
+  echo "Finished $enc "
+done
+
+echo "All runs finished "
+
+```
+
+---
+
+
 ## ⚡ FLOPs & Inference Time Profiling
 
 To evaluate computational cost and performance trade-offs, Cryo-Bench includes a profiler task using [fvcore](https://github.com/facebookresearch/fvcore).
