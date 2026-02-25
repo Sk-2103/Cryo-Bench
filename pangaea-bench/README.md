@@ -54,7 +54,7 @@ export BASE=/path/to/your/results
 
 ---
 
-### 1. Glacial Lake Segmentation (GLID)
+### 1. Glacial Lake Image Segmentation (GLID)
 
 #### RAMEN Encoder
 
