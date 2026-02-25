@@ -161,11 +161,11 @@ To evaluate computational cost and performance trade-offs, Cryo-Bench includes a
 ```bash
 torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
   --config-name=train \
-  dataset=hlsburnscars \
+  dataset=glid \
   encoder=ramen \
   encoder.input_res=30.0 \
-  encoder.input_size=512 \
-  encoder.res=480.0 \
+  encoder.input_size=40 \
+  encoder.res=80.0 \
   decoder=seg_upernet \
   preprocessing=seg_default \
   criterion=cross_entropy \
