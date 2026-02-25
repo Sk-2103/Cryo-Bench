@@ -139,7 +139,7 @@ done
 For models pre-trained on or compatible with SAR imagery, use the `ai4arctic_terramind` dataset config:
 
 ```bash
-for ENC in dofa terramind_large croma_optical ramen_monotemporal
+for ENC in dofa terramind_large croma_sar ramen_monotemporal
 do
   torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
     --config-name=train \
