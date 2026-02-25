@@ -178,27 +178,6 @@ torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
 
 ---
 
-## 🧪 Supported Encoders
-
-| Encoder | Type | SAR Support |
-|---------|------|-------------|
-| `vit_scratch` | ViT baseline | ❌ |
-| `dofa` | Foundation model | ✅ |
-| `terramind_large` | Foundation model | ✅ |
-| `croma_optical` | Contrastive | ✅ |
-| `ramen_monotemporal` | Foundation model | ✅ |
-| `prithvi` | NASA foundation model | ❌ |
-| `satlasnet_si` | Satlas | ❌ |
-| `remoteclip` | CLIP-based | ❌ |
-| `scalemae` | MAE-based | ❌ |
-| `spectralgpt` | Spectral GPT | ❌ |
-| `gfmswin` | Swin-based | ❌ |
-| `ssl4eo_moco` | SSL pre-trained | ❌ |
-| `ssl4eo_dino` | SSL pre-trained | ❌ |
-| `ssl4eo_mae_optical` | SSL pre-trained | ❌ |
-| `ssl4eo_data2vec` | SSL pre-trained | ❌ |
-
----
 
 ## 📂 Repository Structure
 
@@ -240,20 +219,6 @@ If you use Cryo-Bench or the underlying PANGAEA framework, please cite:
   url       = {https://arxiv.org/abs/2412.04204}
 }
 ```
-If you use RAMEN, please cite
-
-```bibtex
-@misc{marsocci2024pangaeaglobalinclusivebenchmark,
-      title={PANGAEA: A Global and Inclusive Benchmark for Geospatial Foundation Models}, 
-      author={Valerio Marsocci and Yuru Jia and Georges Le Bellier and David Kerekes and Liang Zeng and Sebastian Hafner and Sebastian Gerard and Eric Brune and Ritu Yadav and Ali Shibli and Heng Fang and Yifang Ban and Maarten Vergauwen and Nicolas Audebert and Andrea Nascetti},
-      year={2024},
-      eprint={2412.04204},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2412.04204}, 
-}
-```
-
 
 
 
