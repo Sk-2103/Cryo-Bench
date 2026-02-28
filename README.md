@@ -64,9 +64,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 📜 Note
-
-Cryo-Bench is an actively growing benchmark. We aim to extend it to new cryosphere applications, sensors, and geographies. If you have suggestions for dataset inclusion or collaborative ideas, feel free to reach out at skaushik8@wisc.edu — we'd love to hear from you!
 
 ---
 
