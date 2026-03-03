@@ -2,7 +2,7 @@
 
 > **A Benchmark for Evaluating Geospatial Foundation Models on Cryosphere Applications**
 
-[![Paper](https://arxiv.org/abs/2603.01576)(https://arxiv.org)
+[![arXiv](https://img.shields.io/badge/arXiv-2603.01576-b31b1b.svg)](https://arxiv.org/abs/2603.01576)
 [![PANGAEA](https://img.shields.io/badge/Built%20on-PANGAEA-blue?style=flat-square)](https://arxiv.org/abs/2412.04204)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
