@@ -1,0 +1,31 @@
+_target_: pangaea.encoders.thor_encoder.THOR_Encoder
+encoder_weights: pretrained_models/thor_v1_vit_tiny.pt
+download_url: https://huggingface.co/FM4CS/THOR-1.0-tiny/resolve/main/thor_v1_vit_tiny.pt
+
+model_type: thor_vit_tiny_encoder_alibi_patch_size_embed_v1
+embed_dim: 192
+output_dim: 192
+input_size: 256
+patch_size: 16
+gsd: 10
+flexivit_ref_patch_size: 4
+flexivit_ref_grid_size: 14
+flexivit_token_budget: 1296
+
+input_bands:
+  optical:
+    - B2
+    - B3
+    - B4
+    - B8
+    - B11
+    - B12
+  sar:
+    - VV
+    - VH
+
+output_layers:
+  - 3
+  - 5
+  - 7
+  - 11

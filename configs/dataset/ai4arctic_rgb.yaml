@@ -1,0 +1,32 @@
+# @package _global_
+# SAR-as-RGB proxy variant of AI4Arctic/SICD, for encoders that can only ingest 3
+# optical channels (RemoteCLIP, Scale-MAE, GFM-Swin, ...). Recovered 2026-08-04 from the
+# config dumped by run frozen_optical/20260221_093722_9f56e5_vit_scratch_..._ai4arctic_rgb;
+# the file itself was never in this repo. Note img_size 224 here vs 512 in ai4arctic.
+dataset:
+  _target_: pangaea.datasets.ai4arctic.AI4ArcticDataset
+  dataset_name: ai4arctic_rgb
+  root_path: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/AI4Arctic
+  img_size: 224
+  multi_temporal: 0
+  multi_modal: false
+  ignore_index: 255
+  num_classes: 6
+  classes:
+    - open_water
+    - new_ice
+    - young_ice
+    - thin_first_year_ice
+    - thick_first_year_ice
+    - old_ice
+  distribution: [0.65, 0.01, 0.025, 0.021, 0.145, 0.132]
+  bands:
+    optical: [B4, B3, B2]
+  data_mean:
+    optical: [-0.16381396, -0.22024433, -0.12]
+  data_std:
+    optical: [0.61435765, 0.37416646, 0.12]
+  data_min:
+    optical: [0.0, 0.0, 0.0]
+  data_max:
+    optical: [-35.0, -35.0, -35.0]

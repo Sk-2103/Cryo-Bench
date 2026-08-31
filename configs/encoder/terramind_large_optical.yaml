@@ -1,0 +1,36 @@
+# TerraMind large, optical-only — for datasets with no SAR modality (e.g. GSDD). The shared
+# terramind_large.yaml declares optical+sar (changed for GLB multisource), which raises
+# KeyError('sar') when the Preprocessor looks for a modality the dataset never provides.
+# Same fix pattern as terramind_large_sar.yaml for the SAR-only case.
+_target_: pangaea.encoders.terramind_encoder.terramind_v1_large
+encoder_weights: ./pretrained_models/TerraMind_v1_large.pt
+download_url: #https://drive.google.com/uc?id=1CseO5vvMReGlAulm5o4ZgbjUgj8VlAH7&export=download&confirm=yes
+
+input_size: 224
+patch_size: 16
+merge_method: "mean"
+modalities: ["S2L2A"]
+
+input_bands:
+  optical:
+    - B1
+    - B2
+    - B3
+    - B4
+    - B5
+    - B6
+    - B7
+    - B8
+    - B8A
+    # - B9
+    - B10
+    - B11
+    - B12
+
+output_layers:
+  - 7
+  - 11
+  - 15
+  - 23
+
+output_dim: 1024

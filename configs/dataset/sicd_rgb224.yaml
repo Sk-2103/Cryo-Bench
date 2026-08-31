@@ -1,0 +1,28 @@
+# SICD RGB-proxy at img_size 224 — matches how the other optical SICD models were trained,
+# Replaces the ai4arctic centre-crop path, which scored ~1% of each test scene.
+_target_: pangaea.datasets.sicd_tiled.SICDTiled
+dataset_name: SICD
+root_path: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/SICD
+download_url: null
+auto_download: false
+modality: optical
+
+img_size: 224
+multi_temporal: false
+multi_modal: false
+
+ignore_index: 255
+num_classes: 6
+classes: [open_water, new_ice, young_ice, thin_first_year_ice, thick_first_year_ice, old_ice]
+distribution: [0.65, 0.01, 0.025, 0.021, 0.145, 0.132]
+
+bands:
+  optical: [B4, B3, B2]
+data_mean:
+  optical: [-0.16381396, -0.22024433, -0.12]
+data_std:
+  optical: [0.61435765, 0.37416646, 0.12]
+data_min:
+  optical: [-30.0, -35.0, -35.0]
+data_max:
+  optical: [5.0, 0.0, 0.0]

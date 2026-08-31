@@ -1,0 +1,24 @@
+# TerraMind large, SAR-only — replicates the encoder config used for the February
+# CaFFe (zone_mapping_sar) runs. The shared terramind_large.yaml was later changed to
+# optical+sar for GLB multisource, which raises KeyError('optical') on SAR-only datasets.
+_target_: pangaea.encoders.terramind_encoder.terramind_v1_large
+encoder_weights: ./pretrained_models/TerraMind_v1_large.pt
+download_url: null
+
+input_size: 224
+patch_size: 16
+merge_method: "mean"
+modalities: ["S1GRD"]
+
+input_bands:
+  sar:
+    - VV
+    - VH
+
+output_layers:
+  - 7
+  - 11
+  - 15
+  - 23
+
+output_dim: 1024
