@@ -21,10 +21,10 @@ Cryo-Bench includes six benchmark tasks covering five components of the cryosphe
 |---------|-----------|----------|---------|---------|----------------|-------|----------|
 | **GSDD** | Supraglacial Debris | Global | Sentinel-2 | Binary | Slope, Elevation, Velocity | [Article](https://www.sciencedirect.com/science/article/pii/S2666017225001257) | [Zenodo](https://zenodo.org/records/17161810) |
 | **GLID** | Glacial Lakes | Himalayas | WorldView-2, Sentinel-2, Landsat-8, Gaofen-2 | Binary | — | [Article](https://www.sciencedirect.com/science/article/pii/S002216942500410X) | [Zenodo](https://zenodo.org/records/14838695) |
-| **GLB** | Glacial Lakes (multi-source) | High Mountain Asia | Sentinel-2, Sentinel-1, terrain (11 bands) | Binary | Slope, Elevation | Kaushik et al., 2026 -- *Earth System Science Data Discussions*, in review | TBD |
+| **GLB** | Glacial Lakes (multi-source) | High Mountain Asia | Sentinel-2, Sentinel-1, terrain (11 bands) | Binary | Slope, Elevation | [Article](https://essd.copernicus.org/preprints/essd-2026-474/) | [Zenodo](https://zenodo.org/records/17917359) |
 | **SICD** | Sea Ice | Canadian & Greenlandic Arctic | Sentinel-1 | Multiclass | Incidence Angle | [Article](https://egusphere.copernicus.org/preprints/2023/egusphere-2023-2648/) | [HuggingFace](https://huggingface.co/datasets/torchgeo/ai4artic-sea-ice-challenge) |
 | **CaFFe** | Calving Fronts | Greenland, Alaska, Antarctic Peninsula | ERS-1/2, Envisat, RADARSAT-1, ALOS PALSAR, TSX, TDX, Sentinel-1 | Multiclass | — | [Article](https://essd.copernicus.org/articles/14/4287/2022/) | [PANGAEA](https://doi.pangaea.de/10.1594/PANGAEA.940950) |
-| **Shelf-Bench** | Ice-Shelf Extent | Antarctica | SAR | Binary | — | TBD | TBD |
+| **Shelf-Bench** | Ice-Shelf Extent | Antarctica | SAR,  Sentinel-1 | Binary | [Article](https://essd.copernicus.org/preprints/essd-2025-758/) | [Zenodo](https://zenodo.org/records/20430768) |
 
 > GLB and Shelf-Bench replace the earlier GLD dataset in this benchmark. GLB's paper is in review; its download link and Shelf-Bench's source citation are not yet finalized -- both are tracked as open items rather than guessed at here.
 
