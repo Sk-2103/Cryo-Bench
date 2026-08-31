@@ -1,4 +1,0 @@
-_target_: pangaea.decoders.unet.SiamConcUNet
-
-num_classes: ${dataset.num_classes}
-finetune: ${finetune}
