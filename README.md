@@ -3,6 +3,7 @@
 > **A Benchmark for Evaluating Geospatial Foundation Models on Cryosphere Applications**
 
 [![PANGAEA](https://img.shields.io/badge/Built%20on-PANGAEA-blue?style=flat-square)](https://arxiv.org/abs/2412.04204)
+[![Hugging Face Dataset](https://img.shields.io/badge/🤗%20Dataset-Cryo--Bench-yellow?style=flat-square)](https://huggingface.co/datasets/Sk-21/Cryo-Bench)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 ![Cryo-Bench Overview](assets/overview.png)
