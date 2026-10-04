@@ -110,15 +110,7 @@ The table reports mIoU (↑) with **frozen encoders** and **100% training data**
 | Prithvi | 70.52 | 71.11 | 74.96 | 12.58 | 32.01 | 74.41 | 55.93 | 14 |
 | SpectralGPT | 73.22 | 70.87 | 72.82 | 14.39 | 32.70 | 66.75 | 55.12 | 15 |
 
-With frozen encoders, the from-scratch U-Net comes out on top with a 69.31% six-dataset average,
-ahead of TerraMind at 67.86%. Bootstrapping over the test scenes puts the paired difference at
-1.45 points with a 95% interval of [+0.94, +1.98], so that lead holds up and isn't just an
-artifact of which scenes happen to be in the test split. The picture flips once labels get
-scarce: at 10% of the training labels, GFMs retain 92.5% of their full-label accuracy on average
-against 86.1% for U-Net, and five of them outright beat the baseline. Letting each model pick its
-own fine-tuning learning rate closes most of the rest of the gap, with four GFMs (TerraMind,
-GFM-Swin, DOFA, Scale-MAE) edging past U-Net on average. The paper has the full breakdown across
-regimes, per-dataset bootstrap intervals, and the label-efficiency and fine-tuning tables.
+
 
 ## 📜 License
 
