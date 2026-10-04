@@ -1,0 +1,50 @@
+_target_: pangaea.datasets.shelf_bench.ShelfBench
+dataset_name: Shelf-Bench
+root_path: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/Shelf-Bench
+download_url: null
+auto_download: false
+image_dirname: images
+mask_dirname: masks
+
+img_size: 256
+multi_temporal: false
+multi_modal: true
+
+ignore_index: -1
+num_classes: 2
+classes:
+  - Background
+  - Ice Shelf
+distribution:
+  - 0.5
+  - 0.5
+
+bands:
+  optical:
+    - B2
+  sar:
+    - VV
+
+data_mean:
+  optical:
+    - 0.5
+  sar:
+    - 0.5
+
+data_std:
+  optical:
+    - 0.5
+  sar:
+    - 0.5
+
+data_max:
+  optical:
+    - 1.0
+  sar:
+    - 1.0
+
+data_min:
+  optical:
+    - 0.0
+  sar:
+    - 0.0

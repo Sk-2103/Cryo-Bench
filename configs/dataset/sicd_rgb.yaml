@@ -1,0 +1,28 @@
+# SICD, SAR-as-RGB proxy for RGB-only encoders. Covers the full scene via tiling at
+# val/test (see pangaea/datasets/sicd_tiled.py).
+_target_: pangaea.datasets.sicd_tiled.SICDTiled
+dataset_name: SICD
+root_path: /media/turtle-ssd/users/skaushik/Cryo-Data/Benchmark/SICD
+download_url: null
+auto_download: false
+modality: optical
+
+img_size: 512
+multi_temporal: false
+multi_modal: false
+
+ignore_index: 255
+num_classes: 6
+classes: [open_water, new_ice, young_ice, thin_first_year_ice, thick_first_year_ice, old_ice]
+distribution: [0.331, 0.011, 0.023, 0.015, 0.168, 0.451]  # class frequencies on the test split; only used by weighted losses/samplers, not the default cross-entropy setup
+
+bands:
+  optical: [B4, B3, B2]
+data_mean:
+  optical: [-0.16381396, -0.22024433, -0.12]
+data_std:
+  optical: [0.61435765, 0.37416646, 0.12]
+data_min:
+  optical: [-30.0, -35.0, -35.0]
+data_max:
+  optical: [5.0, 0.0, 0.0]
